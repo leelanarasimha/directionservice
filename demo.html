@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<title>Google Maps V3 Trip Planner</title>
+<style>
+html { height: 100% }
+body { height: 100%; margin: 0px; padding: 0px }
+</style>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script ttpe="text/javascript" src="directions.js"></script>
+<script type="text/javascript">
+  var map;
+  var directionsDisplay;
+  var directionsService;
+  var newLocation = null;
+  var waypts = new Array();
+  
+  var directions = [
+          {'lat':42.86105986087,'lng': -112.4322856930574},
+          {'lat' : 42.85877990084355,'lng' : -112.43326388346956},
+          {'lat' : 42.86063029538117,'lng' : -112.43657801322455},
+          {'lat' : 42.862744482795044,'lng' : -112.43896684192438},
+          {'lat' : 42.86220980856902,'lng' : -112.44240768718781},
+          {'lat' : 42.86075715979312,'lng' : -112.44784656990262},
+          {'lat' : 42.86054959095449,'lng' : -112.45247850030792},
+          {'lat' : 42.86201892859786,'lng' : -112.45037814648042},
+          {'lat' : 42.863752499901345,'lng' : -112.45237011351762},
+          {'lat' : 42.86577313139908,'lng' : -112.45467822463172},
+          {'lat' : 42.86733875956513,'lng' : -112.456491794641},
+          {'lat' : 42.8690495576268,'lng' : -112.4584652293122},
+          {'lat' : 42.870524962369494,'lng' : -112.46023163753397},
+          {'lat' : 42.87186748166381,'lng' : -112.4617535063943},
+  	  {'lat' : 42.87414998045248,'lng' : -112.46438569300634},
+		  {'lat' : 42.87446850390335,'lng' : -112.46627240633723},
+		  {'lat' : 42.87960337678932,'lng' : -112.46118040980052},
+		  {'lat' : 42.88044276770921,'lng' : -112.45732504184564},
+		  {'lat' : 42.884572101125215,'lng' : -112.45621717090793},
+		  {'lat' : 42.887870000090004,'lng' : -112.45654116567613},
+		  {'lat' : 42.887870000090004,'lng' : -112.46107946332933},
+		  {'lat' : 42.88784652178998,'lng' : -112.4652836651482}
+		  ];
+ function initialize() {
+	// Setup the map.
+    var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+    var myOptions = {
+      zoom:7,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: chicago
+    }
+    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	
+	// Initialize the directions renderer.
+	directionsDisplay = new DirectionsDisplay(map, document.getElementById("directionsPanel"));
+	directionsService = new DirectionsRoute(directionsDisplay);
+
+	// Setup listener to add a new location for each map click.
+	for(i=0; i<directions.length; i++) {
+		placeMarker(new google.maps.LatLng(directions[i].lat,directions[i].lng));
+	}
+	
+	//createDestinationTable()
+	calcRoute();
+  }
+
+  // Add a new waypoint at the specified location, and recalculate path.
+  function placeMarker(location) {
+
+    //waypts.push("point"+waypts.length);
+	newLocation = location;
+	directionsDisplay.add_marker_(location);
+	//createDestinationTable();
+	newLocation = null;
+	//calcRoute();
+  }
+  
+  function calcRoute() {
+	var all_points = new Array();
+	for(var i = 0; i<directions.length; i++) {
+		all_points.push({
+			location: new google.maps.LatLng(directions[i].lat,directions[i].lng),
+			stopover:true
+		});
+	} 
+    directionsService.route(all_points, 'DRIVING', false, false, false, "mi");
+  }
+</script>
+</head>
+<body onload="initialize()">
+<div id="map_canvas" style="float:left;width:100%;height:100%"></div>
+<div id="parentPanel" style="float:right;width:30%;height:100%;overflow:auto;">
+	<div id="waypointsPanel" style="float:right;width:100%;">
+		<input type='text' id='point0' value='Chicago, IL'>
+		<input type='text' id='point1' value='St Louis, MO'>
+	</div>
+	<div id="controlsPanel" style="float:right;width:100%;">
+		<b>Mode of Travel: </b>
+		<select id="mode" onchange="calcRoute();">
+		  <option value="DRIVING">Driving</option>
+		  <option value="WALKING">Walking</option>
+		  <option value="BICYCLING">Bicycling</option>
+		</select>
+	</div>
+	<div id="directionsPanel" style="float:right;width:100%;"></div>
+</div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>Google Maps V3 Trip Planner</title>
+<title>Google Maps Direction Service</title>
 <style>
 html { height: 100% }
 body { height: 100%; margin: 0px; padding: 0px }
@@ -15,29 +15,75 @@ body { height: 100%; margin: 0px; padding: 0px }
   var newLocation = null;
   var waypts = new Array();
   
-  var directions = [{'lat':42.86105986087,'lng': -112.4322856930574},
-          {'lat' : 42.85877990084355,'lng' : -112.43326388346956},
-          {'lat' : 42.86063029538117,'lng' : -112.43657801322455},
-          {'lat' : 42.862744482795044,'lng' : -112.43896684192438},
-          {'lat' : 42.86220980856902,'lng' : -112.44240768718781},
-          {'lat' : 42.86075715979312,'lng' : -112.44784656990262},
-          {'lat' : 42.86054959095449,'lng' : -112.45247850030792},
-          {'lat' : 42.86201892859786,'lng' : -112.45037814648042},
-          {'lat' : 42.863752499901345,'lng' : -112.45237011351762},
-          {'lat' : 42.86577313139908,'lng' : -112.45467822463172},
-          {'lat' : 42.86733875956513,'lng' : -112.456491794641},
-          {'lat' : 42.8690495576268,'lng' : -112.4584652293122},
-          {'lat' : 42.870524962369494,'lng' : -112.46023163753397},
-          {'lat' : 42.87186748166381,'lng' : -112.4617535063943},
-  	  {'lat' : 42.87414998045248,'lng' : -112.46438569300634},
-  	  {'lat' : 42.87446850390335,'lng' : -112.46627240633723},
-  	  {'lat' : 42.87960337678932,'lng' : -112.46118040980052},
-  	  {'lat' : 42.88044276770921,'lng' : -112.45732504184564},
-  	  {'lat' : 42.884572101125215,'lng' : -112.45621717090793},
-  	  {'lat' : 42.887870000090004,'lng' : -112.45654116567613},
-  	  {'lat' : 42.887870000090004,'lng' : -112.46107946332933},
-  	  {'lat' : 42.88784652178998,'lng' : -112.4652836651482}];
-  	  
+  var directions = [
+         {'lat': 46.601537161, 'lng': -120.500364289},
+{'lat': 46.60293308, 'lng': -120.503573713},
+{'lat': 46.602237356, 'lng': -120.50657413},
+{'lat': 46.601268446, 'lng': -120.510834318},
+{'lat': 46.600464918, 'lng': -120.513231212},
+{'lat': 46.599695331, 'lng': -120.5175639},
+{'lat': 46.599019332, 'lng': -120.520482729},
+{'lat': 46.598233471, 'lng': -120.523892747},
+{'lat': 46.597592978, 'lng': -120.525983483},
+{'lat': 46.597284367, 'lng': -120.528972404},
+{'lat': 46.598530492, 'lng': -120.530279339},
+{'lat': 46.59980822, 'lng': -120.531560169},
+{'lat': 46.599881987, 'lng': -120.534164007},
+{'lat': 46.599881016, 'lng': -120.535386346},
+{'lat': 46.599926538, 'lng': -120.538514334},
+{'lat': 46.59992561, 'lng': -120.541176828},
+{'lat': 46.599932602, 'lng': -120.543808994},
+{'lat': 46.599979442, 'lng': -120.54650236},
+{'lat': 46.6000177, 'lng': -120.550453872},
+{'lat': 46.599992144, 'lng': -120.553880683},
+{'lat': 46.600004868, 'lng': -120.555053806},
+{'lat': 46.599998464, 'lng': -120.557276693},
+{'lat': 46.600002679, 'lng': -120.55942997},
+{'lat': 46.600002072, 'lng': -120.560587664},
+{'lat': 46.59993476, 'lng': -120.562505162},
+{'lat': 46.599957016, 'lng': -120.565230323},
+{'lat': 46.599943043, 'lng': -120.568610393},
+{'lat': 46.599968513, 'lng': -120.572604668},
+{'lat': 46.600016409, 'lng': -120.576687497},
+{'lat': 46.600037451, 'lng': -120.579010875},
+{'lat': 46.600069577, 'lng': -120.582306974},
+{'lat': 46.60008178, 'lng': -120.585491524},
+{'lat': 46.600157097, 'lng': -120.588243305},
+{'lat': 46.60019155, 'lng': -120.592382201},
+{'lat': 46.599144639, 'lng': -120.594596748},
+{'lat': 46.595986873, 'lng': -120.594433178},
+{'lat': 46.592923311, 'lng': -120.594628314},
+{'lat': 46.592967022, 'lng': -120.597232101},
+{'lat': 46.59300397, 'lng': -120.599414271},
+{'lat': 46.593021554, 'lng': -120.601831156},
+{'lat': 46.593057586, 'lng': -120.605096261},
+{'lat': 46.593128164, 'lng': -120.610481951},
+{'lat': 46.593161807, 'lng': -120.616005642},
+{'lat': 46.593152539, 'lng': -120.626244384},
+{'lat': 46.593123863, 'lng': -120.629879754},
+{'lat': 46.593798306, 'lng': -120.635729405},
+{'lat': 46.597030804, 'lng': -120.635712727},
+{'lat': 46.600185279, 'lng': -120.634957547},
+{'lat': 46.600199603, 'lng': -120.627778015},
+{'lat': 46.600203511, 'lng': -120.623877595},
+{'lat': 46.600207489, 'lng': -120.620798209},
+{'lat': 46.600214184, 'lng': -120.616152505},
+{'lat': 46.600184325, 'lng': -120.612152709},
+{'lat': 46.600148703, 'lng': -120.609022672},
+{'lat': 46.600139059, 'lng': -120.606524252},
+{'lat': 46.600074518, 'lng': -120.606524252},
+{'lat': 46.600810766, 'lng': -120.596418461},
+{'lat': 46.603555116, 'lng': -120.596455654},
+{'lat': 46.606142325, 'lng': -120.596481631},
+{'lat': 46.607387819, 'lng': -120.595279051},
+{'lat': 46.607394016, 'lng': -120.592241874},
+{'lat': 46.607319499, 'lng': -120.586223645},
+{'lat': 46.607279577, 'lng': -120.583760394},
+{'lat': 46.607226035, 'lng': -120.580584021},
+{'lat': 46.607178417, 'lng': -120.577908126},
+{'lat': 46.60712119, 'lng': -120.573811058},
+{'lat': 46.607102654, 'lng': -120.572258517},
+{'lat': 46.607089818, 'lng': -120.570395518}];
  function initialize() {
 	// Setup the map.
     var chicago = new google.maps.LatLng(41.850033, -87.6500523);
@@ -63,39 +109,31 @@ body { height: 100%; margin: 0px; padding: 0px }
 
   // Add a new waypoint at the specified location, and recalculate path.
   function placeMarker(location) {
+
+    //waypts.push("point"+waypts.length);
 	newLocation = location;
 	directionsDisplay.add_marker_(location);
+	//createDestinationTable();
 	newLocation = null;
+	//calcRoute();
   }
   
   function calcRoute() {
-  	var all_points = new Array();
+	var all_points = new Array();
 	for(var i = 0; i<directions.length; i++) {
 		all_points.push({
 			location: new google.maps.LatLng(directions[i].lat,directions[i].lng),
 			stopover:true
 		});
 	} 
-	directionsService.route(all_points, 'DRIVING', false, false, false, "mi");
+    directionsService.route(all_points, 'DRIVING', false, false, false, "mi");
   }
 </script>
 </head>
 <body onload="initialize()">
 <div id="map_canvas" style="float:left;width:100%;height:100%"></div>
-<div id="parentPanel" style="float:right;width:30%;height:100%;overflow:auto;">
-	<div id="waypointsPanel" style="float:right;width:100%;">
-		<input type='text' id='point0' value='Chicago, IL'>
-		<input type='text' id='point1' value='St Louis, MO'>
-	</div>
-	<div id="controlsPanel" style="float:right;width:100%;">
-		<b>Mode of Travel: </b>
-		<select id="mode" onchange="calcRoute();">
-		  <option value="DRIVING">Driving</option>
-		  <option value="WALKING">Walking</option>
-		  <option value="BICYCLING">Bicycling</option>
-		</select>
-	</div>
-	<div id="directionsPanel" style="float:right;width:100%;"></div>
+<div id="parentPanel" style="float:right;width:30%;height:100%;overflow:auto; display: none">
+<div id="directionsPanel" style="float:right;width:100%;display: none;"></div>
 </div>
 </body>
 </html>

@@ -15,8 +15,7 @@ body { height: 100%; margin: 0px; padding: 0px }
   var newLocation = null;
   var waypts = new Array();
   
-  var directions = [
-          {'lat':42.86105986087,'lng': -112.4322856930574},
+  var directions = [{'lat':42.86105986087,'lng': -112.4322856930574},
           {'lat' : 42.85877990084355,'lng' : -112.43326388346956},
           {'lat' : 42.86063029538117,'lng' : -112.43657801322455},
           {'lat' : 42.862744482795044,'lng' : -112.43896684192438},
@@ -31,14 +30,14 @@ body { height: 100%; margin: 0px; padding: 0px }
           {'lat' : 42.870524962369494,'lng' : -112.46023163753397},
           {'lat' : 42.87186748166381,'lng' : -112.4617535063943},
   	  {'lat' : 42.87414998045248,'lng' : -112.46438569300634},
-		  {'lat' : 42.87446850390335,'lng' : -112.46627240633723},
-		  {'lat' : 42.87960337678932,'lng' : -112.46118040980052},
-		  {'lat' : 42.88044276770921,'lng' : -112.45732504184564},
-		  {'lat' : 42.884572101125215,'lng' : -112.45621717090793},
-		  {'lat' : 42.887870000090004,'lng' : -112.45654116567613},
-		  {'lat' : 42.887870000090004,'lng' : -112.46107946332933},
-		  {'lat' : 42.88784652178998,'lng' : -112.4652836651482}
-		  ];
+  	  {'lat' : 42.87446850390335,'lng' : -112.46627240633723},
+  	  {'lat' : 42.87960337678932,'lng' : -112.46118040980052},
+  	  {'lat' : 42.88044276770921,'lng' : -112.45732504184564},
+  	  {'lat' : 42.884572101125215,'lng' : -112.45621717090793},
+  	  {'lat' : 42.887870000090004,'lng' : -112.45654116567613},
+  	  {'lat' : 42.887870000090004,'lng' : -112.46107946332933},
+  	  {'lat' : 42.88784652178998,'lng' : -112.4652836651482}];
+  	  
  function initialize() {
 	// Setup the map.
     var chicago = new google.maps.LatLng(41.850033, -87.6500523);
@@ -64,24 +63,20 @@ body { height: 100%; margin: 0px; padding: 0px }
 
   // Add a new waypoint at the specified location, and recalculate path.
   function placeMarker(location) {
-
-    //waypts.push("point"+waypts.length);
 	newLocation = location;
 	directionsDisplay.add_marker_(location);
-	//createDestinationTable();
 	newLocation = null;
-	//calcRoute();
   }
   
   function calcRoute() {
-	var all_points = new Array();
+  	var all_points = new Array();
 	for(var i = 0; i<directions.length; i++) {
 		all_points.push({
 			location: new google.maps.LatLng(directions[i].lat,directions[i].lng),
 			stopover:true
 		});
 	} 
-    directionsService.route(all_points, 'DRIVING', false, false, false, "mi");
+	directionsService.route(all_points, 'DRIVING', false, false, false, "mi");
   }
 </script>
 </head>

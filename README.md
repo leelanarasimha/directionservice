@@ -1,5 +1,6 @@
+
 Direction Service 
-================
+=================
 
  Here is the Direction service library to overcome the google maps direction limits.
 
@@ -16,5 +17,4 @@ Direction Service
  direction sevice.
  
  It takes unlimited way points and gives you the direction connecting that way points depends on the limit query.
- 
  

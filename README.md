@@ -1,4 +1,3 @@
-
 Direction Service 
 =================
 
@@ -18,3 +17,9 @@ Direction Service
  
  It takes unlimited way points and gives you the direction connecting that way points depends on the limit query.
  
+### Contributor
+Leela Narasimha Reddy - leela.narsimha@gmail.com
+
+### Issues & Suggestions
+
+Please report any bugs or feature requests here: https://github.com/leelanarasimha/directionservice/issues

@@ -7,7 +7,7 @@
 
   "title": "Google Maps Direction Service",
   "description": "Google maps direction service with waypoints",
-  "keywords": [ "google maps", "direction service", "leela" ],
+  "keywords": [ "googlemaps", "directionservice", "leela" ],
 
   "licenses": [
     {

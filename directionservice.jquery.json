@@ -1,0 +1,24 @@
+{
+  "name": "directionservice",
+  "version": "1.0",
+  "dependencies": {
+    "jquery": "~1.9.1"
+  },
+
+  "title": "Google Maps Direction Service",
+  "description": "Google maps direction service with waypoints",
+  "keywords": [ "google maps", "direction service", "leela" ],
+
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/leelanarasimha/directionservice/blob/master/LICENSE"
+    }
+  ],
+
+  "author": {
+    "name": "Leela Narasimha Reddy",
+    "email": "leela.narsimha@gmail.com"
+  },
+  "copyright": "2013 Leela Narasimha"
+}

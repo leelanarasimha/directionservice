@@ -1,6 +1,6 @@
 {
   "name": "directionservice",
-  "version": "1.0",
+  "version": "1.0.1",
   "dependencies": {
     "jquery": "~1.9.1"
   },
